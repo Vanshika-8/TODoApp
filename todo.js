@@ -5,6 +5,19 @@ const todoInput = document.querySelector('.todo-input')
 const todoItemsList = document.querySelector('.todo-items')
 
 
+const totalTasks = document.querySelector(".total-tasks span")
+const completedTasks = document.querySelector(".completed-tasks span")
+const remainingTasks = document.querySelector(".remaining-tasks span")
+ 
+function countTasks() {
+  console.log(todos.length,'TASK')
+  // totalTasks.textContent = todos.length
+  const completedTasksArray = todos.filter((item) => item.completed)
+  // console.log(completedTasksArray,'Show')
+  completedTasks.textContent = completedTasksArray.length
+  remainingTasks.textContent = todos.length - completedTasksArray.length
+}
+
 
 todoForm.addEventListener('submit', function(e) {
   e.preventDefault()
@@ -42,14 +55,17 @@ function renderTodos(todos) {
       <button class="delete-button">X</button>
     `
     todoItemsList.append(li)
+    countTasks()
   });
 
 }
 
 
+
 function addStorage(todos) {
 localStorage.setItem('todos', JSON.stringify(todos));
 renderTodos(todos)
+
 }
 
 function getStorage() {
@@ -60,7 +76,6 @@ function getStorage() {
   }
 }
 
-
 function toggle(id) {
   todos.find(function(item) {
    if (item.id == id) {
@@ -68,6 +83,8 @@ function toggle(id) {
     }
   })
 addStorage(todos)
+
+
 }
 
 function deleteTodo(id) {
@@ -75,14 +92,20 @@ function deleteTodo(id) {
      return item.id != id
   });
   addStorage(todos)
+  countTasks()
 }
 
 getStorage()
+countTasks()
 todoItemsList.addEventListener('click', function(e) {
     if (e.target.type === 'checkbox') {
     toggle(e.target.parentElement.getAttribute('data-key'))
+    
   }
  if (e.target.classList.contains('delete-button')) {
    deleteTodo(e.target.parentElement.getAttribute('data-key'))
+  
   }
+  
 })
+
