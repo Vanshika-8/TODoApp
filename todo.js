@@ -7,17 +7,25 @@ const todoItemsList = document.querySelector('.todo-items')
 
 const totalTasks = document.querySelector(".total-tasks span")
 const completedTasks = document.querySelector(".completed-tasks span")
-const remainingTasks = document.querySelector(".remaining-tasks span")
+// const remainingTasks = document.querySelector(".remaining-tasks span")
 
 
+const currentDay=new Date()
+const showcurrentDay=currentDay.toLocaleString('default',{weekday:'long'})
+document.getElementById('day').innerHTML=showcurrentDay
+
+const currentDate=new Date()
+document.getElementById('date').innerHTML=currentDate.getDate()
+
+ const currentYear=new Date()
+ document.getElementById('year').innerHTML=currentYear.getFullYear()
 
 
- 
 function countTasks() {
 totalTasks.textContent = todos.length
   const completedTasksArray = todos.filter((item) => item.completed)
   completedTasks.textContent = completedTasksArray.length
-  remainingTasks.textContent = todos.length - completedTasksArray.length
+  // remainingTasks.textContent = todos.length - completedTasksArray.length
 }
 
 
