@@ -11,6 +11,7 @@ const remainingTasks = document.querySelector(".remaining-tasks span")
 
 
 
+
  
 function countTasks() {
 totalTasks.textContent = todos.length
@@ -48,7 +49,7 @@ function renderTodos(todos) {
     const li = document.createElement('li')
     li.setAttribute('class', 'item')
      li.setAttribute('data-key', item.id)
-     if (item.completed === true) {
+     if (item.completed) {
       li.classList.add('checked')
     }
    li.innerHTML = `<input type="checkbox" class="checkbox" ${checked}>
