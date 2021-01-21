@@ -8,12 +8,13 @@ const todoItemsList = document.querySelector('.todo-items')
 const totalTasks = document.querySelector(".total-tasks span")
 const completedTasks = document.querySelector(".completed-tasks span")
 const remainingTasks = document.querySelector(".remaining-tasks span")
+
+
+
  
 function countTasks() {
-  console.log(todos.length,'TASK')
-  // totalTasks.textContent = todos.length
+totalTasks.textContent = todos.length
   const completedTasksArray = todos.filter((item) => item.completed)
-  // console.log(completedTasksArray,'Show')
   completedTasks.textContent = completedTasksArray.length
   remainingTasks.textContent = todos.length - completedTasksArray.length
 }
