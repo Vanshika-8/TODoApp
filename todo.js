@@ -3,29 +3,74 @@ let todos = []
 const todoForm = document.querySelector('.todo-form')
 const todoInput = document.querySelector('.todo-input')
 const todoItemsList = document.querySelector('.todo-items')
+const searchBar=document.getElementById('searchBar')
+
+
+searchBar.addEventListener('keyup',function(e){
+  const searchString=e.target.value.toLowerCase()
+  const filteredTodos=todos.filter((item)=>{
+    return item.name.toLowerCase().includes(searchString)
+  })
+renderTodos(filteredTodos)
+
+})
+
+searchBar.style.display='none'
+
+
+
+
+function toggleList(listvalue){
+  if(listvalue=='task'){
+    searchBar.style.display='none'
+    todoForm.style.display='block'
+    todoItemsList.style.display='block'
+  }else if(listvalue=='cycle'){
+    todoItemsList.style.display='none'
+    searchBar.style.display='block'
+    todoForm.style.display='none'
+    todoItemsList.style.display='block'
+  }
+  
+}
+
+const todoList=document.querySelector('.todoList')
+todoList.addEventListener('click',function(e){
+    console.log(e)
+  toggleList('task')
+  todoList.classList.add("active-color")
+  searchList.classList.remove("active-color")
+  searchList.classList.add("inactive-color")
+})
+
+const searchList=document.querySelector('.searchList')
+  searchList.addEventListener('click',function(e){
+    console.log(e)
+    toggleList('cycle')
+    searchList.classList.add("active-color")
+    todoList.classList.remove("active-color")
+    todoList.classList.remove("inactive-color")
+  })
 
 
 const totalTasks = document.querySelector(".total-tasks span")
 const completedTasks = document.querySelector(".completed-tasks span")
-// const remainingTasks = document.querySelector(".remaining-tasks span")
 
 
-const currentDay=new Date()
-const showcurrentDay=currentDay.toLocaleString('default',{weekday:'long'})
-document.getElementById('day').innerHTML=showcurrentDay
+const dataObject=new Date()
+const showcurrentDay=dataObject.toLocaleString('default',{weekday:'long'})
+document.getElementById('day').innerHTML=`${showcurrentDay},`
+document.getElementById('date').innerHTML=dataObject.getDate()
+document.getElementById('year').innerHTML=dataObject.toLocaleString('default',{ month:'long'})
 
-const currentDate=new Date()
-document.getElementById('date').innerHTML=currentDate.getDate()
-
- const currentYear=new Date()
- document.getElementById('year').innerHTML=currentYear.getFullYear()
+console.log(`${showcurrentDay}  ${dataObject.getDate()}` )
 
 
 function countTasks() {
 totalTasks.textContent = todos.length
   const completedTasksArray = todos.filter((item) => item.completed)
   completedTasks.textContent = completedTasksArray.length
-  // remainingTasks.textContent = todos.length - completedTasksArray.length
+  
 }
 
 
