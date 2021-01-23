@@ -25,7 +25,7 @@ function toggleList(listvalue){
     searchBar.style.display='none'
     todoForm.style.display='block'
     todoItemsList.style.display='block'
-  }else if(listvalue=='cycle'){
+  }else if(listvalue=='search'){
     todoItemsList.style.display='none'
     searchBar.style.display='block'
     todoForm.style.display='none'
@@ -36,8 +36,7 @@ function toggleList(listvalue){
 
 const todoList=document.querySelector('.todoList')
 todoList.addEventListener('click',function(e){
-    console.log(e)
-  toggleList('task')
+   toggleList('task')
   todoList.classList.add("active-color")
   searchList.classList.remove("active-color")
   searchList.classList.add("inactive-color")
@@ -45,8 +44,7 @@ todoList.addEventListener('click',function(e){
 
 const searchList=document.querySelector('.searchList')
   searchList.addEventListener('click',function(e){
-    console.log(e)
-    toggleList('cycle')
+    toggleList('search')
     searchList.classList.add("active-color")
     todoList.classList.remove("active-color")
     todoList.classList.remove("inactive-color")
@@ -63,7 +61,7 @@ document.getElementById('day').innerHTML=`${showcurrentDay},`
 document.getElementById('date').innerHTML=dataObject.getDate()
 document.getElementById('year').innerHTML=dataObject.toLocaleString('default',{ month:'long'})
 
-console.log(`${showcurrentDay}  ${dataObject.getDate()}` )
+
 
 
 function countTasks() {

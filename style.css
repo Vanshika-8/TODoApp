@@ -78,22 +78,28 @@
 
   .todo-form {
     margin: 20px 20px;
+    width: 100%;
+    margin-top:2em;
+    position: relative;
+    display: flex;
+    text-align: left;
   }
   
   .todo-input {
-    width:230px;
+    width:11em;
     border: none;
     outline: none;
     border-radius: 5px;
     padding: 5px;
     font-size: 1.5rem;
     justify-self: start;
+    border: 3px solid #d7d7d7;
   }
   
   .todo-items {
-    padding-top:30px;
-    min-width:300px;
     align-self: start;
+    width: 100%;
+    padding: 0px;
   }
   
   
@@ -103,12 +109,19 @@
     width: 100%;
     justify-content: space-between;
     display: flex;
+    align-items: baseline;
   }
   
   .container {
     border-radius: 20px;
+    height: 70vh;
   }
-  
+  .container #year{
+    text-align: left;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
   .checkbox {
     margin-right: 20px;
     color:var(--checkbox-color);
@@ -130,15 +143,18 @@
   }
 
 img{
-  width: 35px;
-  height: 25px;
+  width: 41px;
+  height: 100%;
   border: none;
   outline:none;
 }
 
 .add-button{
   border: none;
-    background: none;
+  background: none;
+  position: absolute;
+   right: 5em;
+   top: -2px;
 }
 
   .add-button:hover
@@ -160,19 +176,18 @@ img{
    color:lightgrey;
  }
   
-#day{
-  font-size: 300%;
-  
+
+
+#day , #date{
+  font-size:320%;
+  text-align: left;
+  padding: 10px;
 }
 
-#date{
-  font-size: 300%;
-  
-}
 .todoList,
 .searchList{
   color:var(--inactive-color);
-  
+  cursor: pointer;
 }
 .active-color{
   color:var(--background-color);
