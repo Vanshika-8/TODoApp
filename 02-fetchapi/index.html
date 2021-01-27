@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+<nav class="navBar">
+    <button class="btn" id="getUser">Fetch Users</button>
+    <button class="btn" id="getPost">Fetch Posts</button>
+    <div >
+        <button class="btn" id="addPost1">Add Post</button>
+    </div>
+</nav>
+<div class="searchWrapper">
+    <input type="text" id="search" placeholder="&#xF002; Type here to search" style="font-family: 'Montserrat', sans-serif, 'Font Awesome 5 Free'" />
+    <div id="results"></div>
+
+<div id="output"></div>
+<form class="addPost messageInvisible">
+    <div class="postDiv">
+        <h3>Add Posts</h3>
+      <span  class="notification messageInvisible" >Post Added</span>
+    </div>
+    
+    <div class="inputWrapper">
+        <input type="text"  id="title" placeholder="Title">
+        <input placeholder="Body" id="body"></input>
+    </div>
+
+    <button type="submit" id="submit">Submit</button>
+</form>
+
+    
+
+    <script src="/02-fetchapi/api.js"></script>
+</body>
+
+</html>

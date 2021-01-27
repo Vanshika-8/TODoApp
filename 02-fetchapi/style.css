@@ -1,0 +1,186 @@
+:root{
+    --background-color: #fff;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to right ,#FFBBAA,#F7CE68);
+   display: grid;
+    place-items:center;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top:2rem;
+}
+
+.searchWrapper{
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#search{
+width:20em;
+height: 3em;
+border-radius:10px;
+border:none;
+margin-left:500px;
+padding: 20px;
+}
+
+#output{
+width: 100%;
+margin:20px 0px;
+display: flex;
+flex-wrap: wrap;
+line-height: 1em;
+}
+
+#output div{
+    width: 300px;
+    height: 350px;
+    margin: 60px;
+    line-height: 2.2em;
+    justify-content: center;
+    padding:20px;
+    background-color:var(--background-color);
+    border-radius: 20px;
+}
+
+#getUser{
+background-color:#6AD185;
+color:#D2F3E0;
+box-shadow: 3px 3px 3px 3px #6AD185 ;
+}
+
+#getPost{
+    background-color:#ED706B;
+    color:#F5C1BE;
+    box-shadow: 3px 3px 3px 3px #ED706B ;
+}
+
+#addPost1{
+    background-color:#F19069;
+    color:#FADDD0;
+    box-shadow: 3px 3px 3px 3px #F19069  ;
+    border-radius: 10px;
+}
+
+.btn{
+    width:11em;
+    height: 40px;
+    border:none;
+    border-radius:10px;
+    font-weight: 900;
+    outline:none;
+    cursor:pointer;
+}
+
+.addPost{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    height: 400px;
+    margin-bottom:20px;
+    line-height: 3;
+    justify-content: end;
+    padding:40px;
+    background-color:var(--background-color);
+    border-radius: 20px;
+}
+
+#title{
+    width: 21em;
+    height: 2.5em;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+#body{
+    width: 21em;
+    height:2.5em;
+    border-radius: 5px;
+    border: 1px solid grey;
+    text-align:start;
+    padding:10px;
+}
+
+#submit{
+    background-color: #6AD185;
+    color: #D2F3E0;
+    width: 11em;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.notification{
+    background-color: #6AD185;
+    color: #D2F3E0;
+    width: 70%;
+    height: 2.5em;
+    border: none;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-align: inherit;
+    display: inline-block;
+}   
+
+
+.messageVisible{
+    display: block;
+
+}
+
+
+.messageInvisible{
+    display: none !important;
+
+}
+
+
+.user{
+    text-align: start;
+}
+
+.inputWrapper{
+    line-height: 3.5em;
+    margin-top: 30px;
+    
+}
+
+.postDiv{
+    width: 100%;
+}
+
+
+.inputWrapper input{
+    border:1px solid #CCCCCC;
+    
+}
+
+span.userInfo {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.8em;
+}
