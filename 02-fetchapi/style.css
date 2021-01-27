@@ -1,111 +1,123 @@
-:root{
+/*
+name your css classes better 
+use css variables throughout
+*/
+:root {
     --background-color: #fff;
+    --white:#fff;
 }
 
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
-body{
-    background-image: linear-gradient(to right ,#FFBBAA,#F7CE68);
-   display: grid;
-    place-items:center;
+body {
+    background-image: linear-gradient(to right, #ffbbaa, #f7ce68);
+    display: grid;
+    place-items: center;
 }
 
-.navBar{
+.navBar {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    margin-top:2rem;
+    margin-top: 2rem;
 }
 
-.searchWrapper{
-    margin-top:2rem;
+.searchWrapper {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-#search{
-width:20em;
-height: 3em;
-border-radius:10px;
-border:none;
-margin-left:500px;
-padding: 20px;
+#search {
+    width: 20em;
+    height: 3em;
+    border-radius: 10px;
+    border: none;
+    /* margin-left: 500px; */
+    padding: 20px;
 }
 
-#output{
-width: 100%;
-margin:20px 0px;
-display: flex;
-flex-wrap: wrap;
-line-height: 1em;
+#output {
+    width: 100%;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    line-height: 1em;
 }
 
-#output div{
+#output div {
     width: 300px;
     height: 350px;
     margin: 60px;
     line-height: 2.2em;
     justify-content: center;
-    padding:20px;
-    background-color:var(--background-color);
+    padding: 20px;
+    background-color: var(--background-color);
     border-radius: 20px;
 }
 
-#getUser{
-background-color:#6AD185;
-color:#D2F3E0;
-box-shadow: 3px 3px 3px 3px #6AD185 ;
+#getUser {
+    background-color: #6ad185;
+    /* color:#D2F3E0; */
+    color: white;
+    font-weight: 800;
+    box-shadow: 3px 3px 3px 3px #6ad185;
 }
 
-#getPost{
-    background-color:#ED706B;
-    color:#F5C1BE;
-    box-shadow: 3px 3px 3px 3px #ED706B ;
+#getPost {
+    background-color: #ed706b;
+    /* color:#F5C1BE; */
+    color: white;
+    font-weight: 800;
+    box-shadow: 3px 3px 3px 3px #ed706b;
 }
 
-#addPost1{
-    background-color:#F19069;
-    color:#FADDD0;
-    box-shadow: 3px 3px 3px 3px #F19069  ;
+#addPost1 {
+    background-color: #f19069;
+    /* color: #faddd0; */
+    color: white;
+    font-weight: 800;
+    box-shadow: 3px 3px 3px 3px #f19069;
     border-radius: 10px;
 }
 
-.btn{
-    width:11em;
+.btn {
+    width: 11em;
     height: 40px;
-    border:none;
-    border-radius:10px;
+    border: none;
+    border-radius: 10px;
     font-weight: 900;
-    outline:none;
-    cursor:pointer;
+    outline: none;
+    cursor: pointer;
 }
 
-.addPost{
-    display: flex;
+.addPostForm {
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 500px;
     height: 400px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     line-height: 3;
-    justify-content: end;
-    padding:40px;
-    background-color:var(--background-color);
+    justify-content: space-between;
+    padding: 40px;
+    background-color: var(--background-color);
     border-radius: 20px;
 }
 
-#title{
+#title {
     width: 21em;
     height: 2.5em;
     border-radius: 5px;
@@ -113,18 +125,18 @@ box-shadow: 3px 3px 3px 3px #6AD185 ;
     padding: 10px;
 }
 
-#body{
+#body {
     width: 21em;
-    height:2.5em;
+    height: 2.5em;
     border-radius: 5px;
     border: 1px solid grey;
-    text-align:start;
-    padding:10px;
+    text-align: start;
+    padding: 10px;
 }
 
-#submit{
-    background-color: #6AD185;
-    color: #D2F3E0;
+#submit {
+    background-color: #6ad185;
+    color: #d2f3e0;
     width: 11em;
     height: 40px;
     border: none;
@@ -132,51 +144,48 @@ box-shadow: 3px 3px 3px 3px #6AD185 ;
     font-weight: 900;
     margin-top: 30px;
     cursor: pointer;
+    outline: none;
 }
 
-.notification{
-    background-color: #6AD185;
-    color: #D2F3E0;
-    width: 70%;
+.notification {
+    background-color: #6ad185;
+    color: #d2f3e0;
+    width: 100%;
     height: 2.5em;
     border: none;
     font-weight: 900;
     margin-bottom: 10px;
     text-align: inherit;
     display: inline-block;
-}   
+}
 
-
-.messageVisible{
+.messageVisible {
     display: block;
-
 }
 
-
-.messageInvisible{
+.messageInvisible {
     display: none !important;
-
 }
 
-
-.user{
+.user {
     text-align: start;
 }
 
-.inputWrapper{
+.inputWrapper {
     line-height: 3.5em;
     margin-top: 30px;
-    
 }
 
-.postDiv{
+.postDiv {
     width: 100%;
 }
 
-
-.inputWrapper input{
-    border:1px solid #CCCCCC;
-    
+.inputWrapper input {
+    border: 1px solid #cccccc;
+}
+#search:focus {
+    border: 1px solid #cccccc;
+    outline: none;
 }
 
 span.userInfo {
