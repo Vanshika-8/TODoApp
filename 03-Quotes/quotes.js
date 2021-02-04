@@ -1,17 +1,33 @@
+// class MyQuote{
+//   constructor()
+
+
+// }
+
+
+
+
+
 const randomQuotes=document.getElementById('randomQuotes').addEventListener('click',renderQuotes)
+window.addEventListener('load',(e)=>{
+  renderQuotes()
+})
 let listWrapper =document.getElementById('list')
 const randomAuthor=document.getElementById('randomAuthor').addEventListener('click',renderAuthor)
+window.addEventListener('load',(e)=>{
+  renderAuthor()
+})
 let authorWrapper=document.getElementById('authorlist')
 const wisdomQuotes=document.querySelector("input[name=wisdom]")
-wisdomQuotes.addEventListener( 'change', function() {
-  if(this.checked) {
-     console.log('Checkbox is checked..') 
-     renderWisdom()
-  } else {
-    console.log('Checkbox is not checked..')   
-  }
-});
-let wisdomlist=document.getElementById('wisdomlist')
+// wisdomQuotes.addEventListener( 'change', function() {
+//   if(this.checked) {
+//      console.log('Checkbox is checked..') 
+//      renderWisdom()
+//   } else {
+//     console.log('Checkbox is not checked..')   
+//   }
+// });
+// let wisdomlist=document.getElementById('wisdomlist')
 
 async function wisdomQuote(){
   try{
@@ -21,7 +37,6 @@ async function wisdomQuote(){
     console.log(error)
   }
 }
-
 async function renderWisdom() {
   const renderWisdom = await wisdomQuote();
   let wlist=''
@@ -31,9 +46,7 @@ async function renderWisdom() {
       <span>${results.content}</span>
       <span>${results.author}</span>
       </div>`;
-
-     
-  });
+});
 
  
 wisdomlist.innerHTML = wlist;
@@ -65,8 +78,9 @@ async function renderQuotes() {
 
  
   listWrapper.innerHTML = html;
-}
 
+}
+// window.onload=renderQuotes()
 
 
 async function getAuthors(){
@@ -92,3 +106,24 @@ authorWrapper.innerHTML=listAuthor
 }
 
 
+  const form = document.querySelector('#formId');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+   const inputChecked=document.querySelectorAll('input[type=checkbox]')
+    console.log('Getting the checkboxs',inputChecked)
+    const nodeToArray=Array.from(inputChecked)
+    console.log('Convert nodelist to array',nodeToArray)
+    const elementsChecked=nodeToArray.filter(check=> check.checked)
+    console.log('elements checked',elementsChecked)
+    const nameCheckBox=elementsChecked.map(item=>item.name)
+    console.log('Returning name',nameCheckBox)
+   const joinName= nameCheckBox.join('|')
+    console.log(joinName,'joing name')
+  // const renderWisdom = await wisdomQuote();
+  //Fetching the data .
+  let resp=await fetch(`https://api.quotable.io/quotes?tags=${joinName}`)
+  resp=  await resp.json()
+  console.log('rendering wisdom quotes',resp)
+    });
+
+~
