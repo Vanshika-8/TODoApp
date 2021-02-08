@@ -1,0 +1,62 @@
+:root{
+    
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+
+body{
+     font-family: "Montserrat", sans-serif;;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    padding: 20px;
+}
+
+#logo{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 20px;
+    height: 7rem;
+}
+
+img{
+    width:70px;
+}
+
+
+h1{
+    margin: 5px;
+    padding: 5px;
+    font-family:'PT Serif', serif;
+}
+
+#formId{
+    line-height: 2rem;
+    border-bottom: 2px solid grey;
+    border-left: 2px solid grey;
+    align-items: center;
+    display: grid;
+    margin: 20px;
+    padding: 30px;
+    box-shadow: 2px 2px 20px 0px dimgrey;
+}
+
+#listWrapper{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: masonary;
+    grid-gap:1em;
+
+}
+
+#listWrapper div{
+   background-color: #f4f4f4;
+   grid-row:span 2;
+    line-height: 3rem;
+}

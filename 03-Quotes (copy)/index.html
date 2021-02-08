@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <div  id="logo"> <img src="/03-Quotes (copy)/assets/quotation-mark.png" alt="logo">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+    <h1>Quotlify</h1>
+    </div>
+    <form name="myFrom"  id="formId" >
+        <div class="filterAndLimit">
+            <h3>Advanced Filter</h3>  
+            <select  name="filters" id="filters">
+                <option value="" disabled selected>Select your option</option>
+              <option value="quotes">Quotes</option>
+              <option value="author">Author</option>
+            </select>
+            <label for="limit">Limit</label>
+            <input id="limit" name="Name"type="text">
+        </div>
+        <div class="checkBoxs">
+    <input type="checkbox" id="wisdom" name="wisdom" value="Wisdom">
+    <label for="wisdom"> Wisdom</label>
+    <input type="checkbox" id="technology" name="technology" value="technology">
+    <label for="technology">Technology</label>
+    <input type="checkbox" id="insiprational" name="insiprational" value="Boat">
+    <label for="insiprational"> Insiprational</label>
+    <input type="checkbox" id="famous" name="famous" value="famous">
+    <label for="famous"> Famous-quotes</label>
+    <input type="checkbox" id="friendship" name="friendship" value="friendship">
+    <label for="friendship"> Friendship</label>
+</div>
+<button type="submit" >Submit</button>
+     </form>
+    </div>
+    <button id="randomQuotes">Generate Random Quotes</button>
+ <button  id="randomAuthor">Generate Random Authors</button>
+    <div id="listWrapper"></div>
+    <!-- <div id="authorlist"></div> -->
+    <!-- <div id="checkboxList"></div> -->
+</body>
+<script src="quotes.js"></script>
+</html>
