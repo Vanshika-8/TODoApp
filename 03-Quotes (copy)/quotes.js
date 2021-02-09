@@ -1,8 +1,36 @@
-// class MyQuote{
-//   constructor()
-
-
+// function validateDropDown(){
+//   document.querySelector('#filters').onclick=function(e){
+//     if(e.target.value==='author'){
+//       validateAuthor()
+//     }else if(e.target.value==='quotes'){
+//       renderQuotes()
+//     }
+//   }
 // }
+
+
+// function validateQuotes(){
+//   if(limit.value.length<=0){
+//     alert("Enter Limit")
+//     limit.focus()
+//     return false
+// }
+
+function validateAuthor(){
+  let limit=document.querySelector('#limit')
+  let name=document.querySelector('#name')
+ if(limit.value.length<=0){
+    alert("Enter Limit")
+    limit.focus()
+    return false
+  }if(name.value.length<=0){
+    alert("Enter Name")
+    name.focus()
+    return false
+  }
+  renderAuthor(limit,name)
+  return false
+}
 
 
 const randomQuotes=document.getElementById('randomQuotes').addEventListener('click',renderQuotes("random"))
@@ -11,40 +39,7 @@ window.addEventListener('load',(e)=>{
 })
 let listWrapper = document.getElementById('listWrapper')
 
-// const wisdomQuotes=document.querySelector("input[name=wisdom]")
 
-// wisdomQuotes.addEventListener( 'click', function() {
-//   if(this.checked) {
-//     //  console.log('Checkbox is checked..') 
-//      renderWisdom()
-//   } else {
-//     console.log('Checkbox is not checked..')   
-//   }
-// });
-// let wisdomlist=document.getElementById('wisdomlist')
-
-async function wisdomQuote(){
-  try{
-    let resp=await fetch('https://api.quotable.io/quotes?tags=wisdom')
-    return await resp.json()
-  }catch(error){
-    console.log(error)
-  }
-}
-async function renderWisdom() {
-  const renderWisdom = await wisdomQuote();
-  let wlist=''
-   renderWisdom.results.forEach(results => {
-      wlist+= `<div>
-      <span>${results.tags}</span>
-      <span>${results.content}</span>
-      <span>${results.author}</span>
-      </div>`;
-});
-
- 
-list.innerHTML = wlist;
-}
 
 
 async function getQuotes() {
@@ -62,9 +57,9 @@ async function renderQuotes() {
   let listQuotes = '';
   renderQuotes.results.forEach(results => {
       let htmlSegment = `<div>
-      <span>${results.tags}</span>
-      <span>${results.content}</span>
-      <span>${results.author}</span>
+      <h1 class="tagName">${results.tags}</h1>
+      <span class="content">${results.content}</span>
+      <span class="authorName">${results.author}</span>
       </div>`;
 
       listQuotes += htmlSegment;
@@ -84,7 +79,7 @@ async function getAuthors(){
   }
 }
 
-async function renderAuthor(){
+async function renderAuthor(limit,name){
 const renderAuthor=await getAuthors()
 let listAuthor=''
 renderAuthor.results.forEach(results=>{
@@ -104,7 +99,7 @@ listWrapper.innerHTML=listAuthor;
     const form = document.querySelector('#formId');
    form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    renderAuthor()
+    validateAuthor()
     const inputChecked=document.querySelectorAll('input[type=checkbox]')
    const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
       let resp=await fetch(`https://api.quotable.io/quotes?tags=${nodeToArray}`)
@@ -113,34 +108,19 @@ listWrapper.innerHTML=listAuthor;
       let checkBoxList=''
       resp.results.forEach(results=>{
         checkBoxList+=`<div>
-        <span>${results.tags.join(' ')}</span>
-        <span>${results.content}</span>
-        <span>${results.author}</span>
+        <h1 class="tagName">${results.tags.join(' ')}</h1>
+        var iEl = document.createElement('i');  
+      iEl.style.className = "fa fa-quotes";  
+      document.getElementByClassName("content").appendChild(iEl); 
+        <span  id="icon" class="content">${results.content}</span>
+               
+        <span class="authorName">${results.author}</span>
         </div>`
       })
      document.getElementById('listWrapper').innerHTML=checkBoxList
     
  
     });
+    
 
 
-  // document.querySelector("#filters").onchange = function (e){
-  //   if(e.target.value==='author')
-  //   {
-  //     dropDown='author'
-  //   }
-  //   else if(e.target.value==='quotes'){
-  //     dropDown='quotes'
-  //   }
-  //  }
-
-//  function Validate(){
-//    const dropDown=document.querySelector('#filters')
-//    if(dropDown.value==='')
-//    {
-//      alert('Select something')
-//      return false;
-//    }else{
-//      return true;
-//    }
-//  }

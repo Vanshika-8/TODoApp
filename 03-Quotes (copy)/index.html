@@ -19,12 +19,18 @@
         <div class="filterAndLimit">
             <h3>Advanced Filter</h3>  
             <select  name="filters" id="filters">
-                <option value="" disabled selected>Select your option</option>
+                <option value="Select your option" disabled selected>Select your option</option>
               <option value="quotes">Quotes</option>
-              <option value="author">Author</option>
+              <option id="authorDrop" value="author">Author</option>
             </select>
+            
+        </div>
+        <div class="limitAndName">
             <label for="limit">Limit</label>
             <input id="limit" name="Name"type="text">
+            <label for="name">Name</label>
+            <input id="name" name="Name"type="text">
+            
         </div>
         <div class="checkBoxs">
     <input type="checkbox" id="wisdom" name="wisdom" value="Wisdom">
@@ -43,7 +49,7 @@
     </div>
     <button id="randomQuotes">Generate Random Quotes</button>
  <button  id="randomAuthor">Generate Random Authors</button>
-    <div id="listWrapper"></div>
+ <div id="listWrapper"></div>
     <!-- <div id="authorlist"></div> -->
     <!-- <div id="checkboxList"></div> -->
 </body>
