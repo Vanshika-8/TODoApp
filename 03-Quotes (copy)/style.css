@@ -63,7 +63,9 @@ h1{
   background-color:#f4f4f4;
     overflow:hidden;
     break-inside: avoid;
-  
+   background-color: #82ABFA;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 100%)
   
 }
 
@@ -79,7 +81,10 @@ h1{
     width: 100%;
     height: 150px;
     text-align: end;
-   
+    position: absolute;
+    z-index: 1;
+   /* max-width: 100vw;
+ max-height: 100vh; */
 }
 
 #listWrapper div:nth-child(20n-11){
@@ -104,9 +109,12 @@ h1{
     height: 300px;
  }
 
-
+ #listWrapper div:nth-child(2n+2){
+    background-color: #EB5A6E;
+ }
  .authorName{
      float:right;
      top:-3px;
-     
+     position: absolute;
+     z-index: 1;
  }
