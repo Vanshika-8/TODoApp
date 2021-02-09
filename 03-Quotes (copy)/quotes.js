@@ -1,5 +1,21 @@
+
+ let isCheckBoxChecked=false
+function validateQuotes(){
+ 
+  if(limit.value.length<=0){
+    alert("Enter Limit")
+    limit.focus()
+    }if(!isCheckBoxChecked){
+      alert('PLease check the checkbox')
+      }
+      if( limit.value.length && isCheckBoxChecked){
+        renderQuotes(isCheckBoxChecked,limit)
+      }
+      }
+
+
 // function validateDropDown(){
-//   document.querySelector('#filters').onclick=function(e){
+//   document.querySelector('#filters').onsubmit=function(e){
 //     if(e.target.value==='author'){
 //       validateAuthor()
 //     }else if(e.target.value==='quotes'){
@@ -9,12 +25,6 @@
 // }
 
 
-// function validateQuotes(){
-//   if(limit.value.length<=0){
-//     alert("Enter Limit")
-//     limit.focus()
-//     return false
-// }
 
 function validateAuthor(){
   let limit=document.querySelector('#limit')
@@ -22,14 +32,16 @@ function validateAuthor(){
  if(limit.value.length<=0){
     alert("Enter Limit")
     limit.focus()
-    return false
+    
   }if(name.value.length<=0){
     alert("Enter Name")
     name.focus()
-    return false
+    
   }
-  renderAuthor(limit,name)
-  return false
+  if( limit.value.length && name.value.length){
+    renderAuthor(limit,name)
+  }
+  
 }
 
 
@@ -52,7 +64,7 @@ async function getQuotes() {
   }
 }
 
-async function renderQuotes() {
+async function renderQuotes(isCheckBoxChecked,limit) {
   const renderQuotes = await getQuotes();
   let listQuotes = '';
   renderQuotes.results.forEach(results => {
@@ -97,12 +109,15 @@ listWrapper.innerHTML=listAuthor;
 
 
     const form = document.querySelector('#formId');
-   form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    validateAuthor()
     const inputChecked=document.querySelectorAll('input[type=checkbox]')
-   const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
-      let resp=await fetch(`https://api.quotable.io/quotes?tags=${nodeToArray}`)
+    const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
+  isCheckBoxChecked=nodeToArray ? true : false 
+     //validateDropDown()
+     validateQuotes()
+    validateAuthor()
+   let resp=await fetch(`https://api.quotable.io/quotes?tags=${nodeToArray}`)
       resp=  await resp.json()
       console.log('rendering wisdom quotes',resp)
       let checkBoxList=''
@@ -123,4 +138,4 @@ listWrapper.innerHTML=listAuthor;
     });
     
 
-
+  
