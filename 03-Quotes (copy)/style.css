@@ -46,14 +46,16 @@ h1{
     margin: 20px;
     padding: 30px;
     box-shadow: 2px 2px 20px 0px dimgrey;
+  
 }
 
 #listWrapper{
+   
    width: 1200px;
    margin:20px auto;
    columns: 3;
    column-gap: 40px;
-   
+
 }
 
 #listWrapper div{
@@ -63,7 +65,7 @@ h1{
   background-color:#f4f4f4;
     overflow:hidden;
     break-inside: avoid;
-   background-color: #82ABFA;
+   background-color: #EB5A6E;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 100%)
   
@@ -106,8 +108,8 @@ h1{
     height: 300px;
  }
 
- #listWrapper div:nth-child(2n+2){
-    background-color: #EB5A6E;
+ #listWrapper div:nth-child(odd){
+    background-color: #82ABFA;
  }
  .authorName{
      float:right;

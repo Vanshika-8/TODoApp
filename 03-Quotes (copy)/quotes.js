@@ -1,108 +1,85 @@
-
- let isCheckBoxChecked=false
+let isCheckBoxChecked=false
 function validateQuotes(){
- 
-  if(limit.value.length<=0){
-    alert("Enter Limit")
-    limit.focus()
-    }if(!isCheckBoxChecked){
-      alert('PLease check the checkbox')
-      }
-      if( limit.value.length && isCheckBoxChecked){
-        renderQuotes(isCheckBoxChecked,limit)
+ if(limit.value.length<=0 && !isCheckBoxChecked){
+    alert("Enter Limit and Checkbox is not checked")
+    }if( limit.value.length && isCheckBoxChecked){
+      getQuotes(isCheckBoxChecked,limit)
       }
       }
-
-
-// function validateDropDown(){
-//   document.querySelector('#filters').onsubmit=function(e){
-//     if(e.target.value==='author'){
-//       validateAuthor()
-//     }else if(e.target.value==='quotes'){
-//       renderQuotes()
-//     }
-//   }
-// }
-
-
 
 function validateAuthor(){
   let limit=document.querySelector('#limit')
   let name=document.querySelector('#name')
- if(limit.value.length<=0){
-    alert("Enter Limit")
-    limit.focus()
-    
-  }if(name.value.length<=0){
-    alert("Enter Name")
-    name.focus()
-    
+ if(limit.value.length<=0 && name.value.length<=0){
+    alert("Enter Limit and name")
+}if( limit.value.length && name.value.length){
+  getAuthors(limit,name)
   }
-  if( limit.value.length && name.value.length){
-    renderAuthor(limit,name)
-  }
-  
 }
 
 
-const randomQuotes=document.getElementById('randomQuotes').addEventListener('click',renderQuotes("random"))
+//const randomQuotes=document.getElementById('randomQuotes').addEventListener('click',getQuotes("random"))
 window.addEventListener('load',(e)=>{
-  renderQuotes()
+renderQuotes()
 })
 let listWrapper = document.getElementById('listWrapper')
 
 
-
-
-async function getQuotes() {
-  let url = 'https://api.quotable.io/quotes';
+async function getQuotes(isCheckBoxChecked,limit) {
   try {
-      let res = await fetch(url);
-      return await res.json();
+      const fetchData = await fetch('https://api.quotable.io/quotes');
+    return await fetchData.json();
+     
   } catch (error) {
       console.log(error);
   }
+  
+  return await renderQuotes(fetchData)
 }
 
-async function renderQuotes(isCheckBoxChecked,limit) {
-  const renderQuotes = await getQuotes();
+async function renderQuotes(data) {
+   data=await getQuotes()
   let listQuotes = '';
-  renderQuotes.results.forEach(results => {
-      let htmlSegment = `<div>
+ listQuotes+=data.results.map((results) => {
+      return `<div>
       <h1 class="tagName">${results.tags}</h1>
+      <img src="quote.png"
       <span class="content">${results.content}</span>
       <span class="authorName">${results.author}</span>
       </div>`;
-
-      listQuotes += htmlSegment;
-  });
+}).join('')
 
   listWrapper.innerHTML = listQuotes;
 }
 
 
 
-async function getAuthors(){
+
+
+
+async function getAuthors(limit,name){
   try{
-    let response=await fetch(`https://api.quotable.io/authors`)
-    return await response.json()
+    const fetchData=await fetch(`https://api.quotable.io/authors`)
+    return await fetchData.json()
   }catch(error){
     console.log(error)
   }
+  return await renderAuthor(fetchData)
 }
 
-async function renderAuthor(limit,name){
-const renderAuthor=await getAuthors()
+async function renderAuthor(data){
+data=await getAuthors()
 let listAuthor=''
-renderAuthor.results.forEach(results=>{
-  listAuthor+=`<div>
+listAuthor=data.results.map((results)=>{
+  return `<div>
   <span>${results.name}</span>
       <span>${results.bio}</span>
       <span>${results.link}</span>
   </div>`
-})
+}).join('')
 
 listWrapper.innerHTML=listAuthor;
+
 }
 
 
@@ -114,8 +91,7 @@ listWrapper.innerHTML=listAuthor;
     const inputChecked=document.querySelectorAll('input[type=checkbox]')
     const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
   isCheckBoxChecked=nodeToArray ? true : false 
-     //validateDropDown()
-     validateQuotes()
+   validateQuotes()
     validateAuthor()
    let resp=await fetch(`https://api.quotable.io/quotes?tags=${nodeToArray}`)
       resp=  await resp.json()
@@ -124,10 +100,8 @@ listWrapper.innerHTML=listAuthor;
       resp.results.forEach(results=>{
         checkBoxList+=`<div>
         <h1 class="tagName">${results.tags.join(' ')}</h1>
-        var iEl = document.createElement('i');  
-      iEl.style.className = "fa fa-quotes";  
-      document.getElementByClassName("content").appendChild(iEl); 
-        <span  id="icon" class="content">${results.content}</span>
+        <img src="quote.png"
+     <span   class="content">${results.content}</span>
                
         <span class="authorName">${results.author}</span>
         </div>`
