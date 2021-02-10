@@ -1,115 +1,69 @@
-let isCheckBoxChecked=false
-function validateQuotes(){
- if(limit.value.length<=0 && !isCheckBoxChecked){
-    alert("Enter Limit and Checkbox is not checked")
-    }if( limit.value.length && isCheckBoxChecked){
-      getQuotes(isCheckBoxChecked,limit)
-      }
-      }
-
-function validateAuthor(){
-  let limit=document.querySelector('#limit')
-  let name=document.querySelector('#name')
- if(limit.value.length<=0 && name.value.length<=0){
-    alert("Enter Limit and name")
-}if( limit.value.length && name.value.length){
-  getAuthors(limit,name)
-  }
-}
-
-
-//const randomQuotes=document.getElementById('randomQuotes').addEventListener('click',getQuotes("random"))
-window.addEventListener('load',(e)=>{
-renderQuotes()
-})
 let listWrapper = document.getElementById('listWrapper')
+const inputChecked=document.querySelectorAll('input[type=checkbox]')
+const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
+console.log(nodeToArray)
+console.log('node',nodeToArray)
+  window.addEventListener('load',(e)=>{
+  getQuotes()
+  })
 
 
-async function getQuotes(isCheckBoxChecked,limit) {
-  try {
-      const fetchData = await fetch('https://api.quotable.io/quotes');
-    return await fetchData.json();
-     
-  } catch (error) {
-      console.log(error);
+  async function getQuotes() {
+    try {
+        const fetchData = await fetch('https://api.quotable.io/quotes');
+      let res=await fetchData.json();
+       return renderQuotes(res)
+        } catch (error) {
+        console.log(error);
+    } 
   }
   
-  return await renderQuotes(fetchData)
-}
-
-async function renderQuotes(data) {
-   data=await getQuotes()
-  let listQuotes = '';
- listQuotes+=data.results.map((results) => {
-      return `<div>
-      <h1 class="tagName">${results.tags}</h1>
-      <img src="quote.png"
-      <span class="content">${results.content}</span>
-      <span class="authorName">${results.author}</span>
-      </div>`;
-}).join('')
-
-  listWrapper.innerHTML = listQuotes;
-}
-
-
-
-
-
-
-async function getAuthors(limit,name){
-  try{
-    const fetchData=await fetch(`https://api.quotable.io/authors`)
-    return await fetchData.json()
-  }catch(error){
-    console.log(error)
+  async function renderQuotes(data) {
+    let listQuotes = '';
+   listQuotes+=data.results.map((results) => {
+        return `<div>
+        <h1 class="tagName">${results.tags}</h1>
+        <img src="quote.png"
+        <span class="content">${results.content}</span>
+        <span class="authorName">${results.author}</span>
+        </div>`;
+  }).join('')
+  
+    listWrapper.innerHTML = listQuotes;
   }
-  return await renderAuthor(fetchData)
-}
+  
 
-async function renderAuthor(data){
-data=await getAuthors()
-let listAuthor=''
-listAuthor=data.results.map((results)=>{
-  return `<div>
-  <span>${results.name}</span>
-      <span>${results.bio}</span>
-      <span>${results.link}</span>
-  </div>`
-}).join('')
+  async function getQuotesByTagNames() {
+   
+    try {
+     
+        const fetchDataByTags = await fetch('https://api.quotable.io/quotes?tags=${nodeToArray}');
+      let resp=await fetchDataByTags.json();
+       return renderQuotesByTags(resp)
+        } catch (error) {
+        console.log(error);
+    } 
+  }
 
-listWrapper.innerHTML=listAuthor;
-
-}
-
-
-
-
-    const form = document.querySelector('#formId');
-    form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const inputChecked=document.querySelectorAll('input[type=checkbox]')
-    const nodeToArray=Array.from(inputChecked).filter(check=>check.checked).map(item=>item.name).join('|')
-  isCheckBoxChecked=nodeToArray ? true : false 
-   validateQuotes()
-    validateAuthor()
-   let resp=await fetch(`https://api.quotable.io/quotes?tags=${nodeToArray}`)
-      resp=  await resp.json()
-      console.log('rendering wisdom quotes',resp)
-      let checkBoxList=''
-      resp.results.forEach(results=>{
-        checkBoxList+=`<div>
+  async function renderQuotesByTags(data) {
+    let listQuotesByTags = '';
+   listQuotesByTags+=data.results.map((results) => {
+        return `<div>
         <h1 class="tagName">${results.tags.join(' ')}</h1>
         <img src="quote.png"
-     <span   class="content">${results.content}</span>
-               
+        <span class="content">${results.content}</span>
         <span class="authorName">${results.author}</span>
-        </div>`
-      })
-     document.getElementById('listWrapper').innerHTML=checkBoxList
-    
- 
-    });
-    
-
+        </div>`;
+  }).join('')
   
+    listWrapper.innerHTML = listQuotesByTags;
+  }
+
+
+
+  const form = document.querySelector('#formId');
+  form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  getQuotesByTagNames()
+
+  });
