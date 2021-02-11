@@ -3,10 +3,13 @@
 
 :root {
     --card-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 29%);
-    --pink-background-color: #EB5A6E;
-    --purple-background-color: #82ABFA;
+    --pink-background-color: #eb5a6e;
+    --purple-background-color: #82abfa;
     --white-color: #fff;
     --box-shadow-card: 0 35px 20px #777;
+    --button-color:#fff;
+    --button-background:#6AD185;
+    --border-checkbox:#C4C4C4;
 }
 
 * {
@@ -88,31 +91,42 @@ h1 {
     z-index: 1;
 }
 
-#listWrapper div:nth-child(20n-11) {
+section.quotes__card:nth-child(8),
+section.author__card:nth-child(7) {
     height: 400px;
 }
-#listWrapper div:nth-child(20n-10) {
+section.quotes__card:nth-child(9),
+section.author__card:nth-child(8) {
     height: 400px;
 }
-#listWrapper div:nth-child(20n-9) {
+section.quotes__card:nth-child(10),
+section.author__card:nth-child(9) {
     height: 400px;
 }
-#listWrapper div:nth-child(20n-8) {
+section.quotes__card:nth-child(11),
+section.author__card:nth-child(10) {
     height: 400px;
 }
-#listWrapper div:nth-child(20n-7) {
+section.quotes__card:nth-child(12),
+section.author__card:nth-child(11) {
     height: 400px;
 }
-#listWrapper div:nth-child(20n + 1) {
-    height: 230px;
+section.quotes__card:nth-child(13),
+section.author__card:nth-child(10) {
+    height: 400px;
 }
-#listWrapper div:nth-child(20n + 2) {
+section.quotes__card:nth-child(20n + 1),
+section.author__card:nth-child(1) {
+    height: 270px;
+}
+section.quotes__card:nth-child(20n + 2),
+section.author__card:nth-child(2) {
+    height: 300px;
+}
+section.author__card:nth-child(14) {
     height: 300px;
 }
 
-/* #listWrapper div:nth-child(odd){
-    background-color: #82ABFA;
- } */
 .authorName {
     float: right;
     top: -3px;
@@ -141,7 +155,8 @@ section.randomFilters {
     padding: 20px;
 }
 
-section.quotes__card {
+section.quotes__card,
+.author__card {
     position: relative;
     z-index: 2;
     display: grid;
@@ -154,41 +169,133 @@ section.quotes__card {
     box-shadow: var(--box-shadow-card);
 }
 
-span.tags__displayed {
+span.tags__displayed,
+.authorName__displayed {
     text-align: end;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-img.quotes__image {
+img.quotes__image,
+.author__image {
     width: 1.5em;
     height: 1.5em;
 }
 
-.quotes__content\&image {
+.quotes__content-image,
+.author__content-image {
     display: flex;
     justify-content: space-around;
-    padding: 50px;
-    line-height: 2rem;
+    padding: 19px;
+    line-height: 1em;
 }
 
-span.authors__displayed {
+span.authors__displayed,
+.link__displayed {
     text-align: end;
     padding-bottom: 23px;
 }
 
-.quotes__card::before {
+.quotes__card::before,
+.author__card::before {
     content: "";
     height: 50%;
     width: 100%;
     top: 0;
     clip-path: var(--card-clip-path);
-    background: var(--pink-background-color);
+    background-color: var(--purple-background-color);
     z-index: -1;
     position: absolute;
 }
 
+.quotes__card:nth-child(even)::before,
+.author__card:nth-child(even)::before {
+    background: var(--pink-background-color);
+}
 
-.quotes__card:nth-child(even)::before{
-background-color:var(--purple-background-color);
+.information__link {
+    display: flex;
+    justify-content: end;
+}
+img.wiki__image {
+    width: 2rem;
+    height: 2rem;
+}
+
+a.link__displayed {
+    text-align: center;
+    padding: 15px;
+}
+
+button#quotes__button,
+#author__button {
+    color: black;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+}
+
+.random__quotations {
+    display: inline-flex;
+    justify-content: center;
+    align-items: end;
+    background-color: var(--pink-background-color);
+}
+
+.random__authors {
+    display: inline-flex;
+    text-align: center;
+    background-color: var(--purple-background-color);
+}
+
+button#submit__button {
+    display: inline-block;
+    width: 9rem;
+    height: 32px;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--button-background);
+    color:var(--button-color);
+    border:none;
+}
+
+.limitAndName {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+}
+
+div#checkBoxs {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3em;
+    border: 1px solid var(--border-checkbox);
+    margin-bottom: 1em;
+}
+
+input.name__placeholder {
+    margin-left: 2em;
+}
+
+.limit__placeholder ,
+.name__placeholder{
+    padding: 0.4em;
+}
+
+.select__input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.select__input option :disabled{
+ color:var(--border-checkbox);
+}
+
+submit__wrapper {
+    display: flex;
+    justify-content: flex-end;
 }
