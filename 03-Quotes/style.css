@@ -7,9 +7,9 @@
     --purple-background-color: #82abfa;
     --white-color: #fff;
     --box-shadow-card: 0 35px 20px #777;
-    --button-color:#fff;
-    --button-background:#6AD185;
-    --border-checkbox:#C4C4C4;
+    --button-color: #fff;
+    --button-background: #6ad185;
+    --border-checkbox: #c4c4c4;
 }
 
 * {
@@ -49,7 +49,7 @@ h1 {
 
 #formId {
     line-height: 2rem;
-    width: 90%;
+    width: 89%;
     border-bottom: 2px solid grey;
     border-left: 2px solid grey;
     margin-left: 60px;
@@ -64,8 +64,6 @@ h1 {
     columns: 3;
     column-gap: 50px;
 }
-
-
 
 .tagName {
     font-size: 19px;
@@ -141,8 +139,10 @@ section.randomFilters {
 }
 
 .wrapper__container {
+    display: block;
     padding: 20px;
-    width:1200px
+    width: 1200px;
+    margin: auto;
 }
 
 section.quotes__card,
@@ -259,22 +259,23 @@ button#submit__button {
 }
 
 div#checkBoxs {
-        display: flex;
-        justify-content:space-between;
-        align-items: baseline;
-        padding: 0.3em;
-        border: 1px solid var(--border-checkbox);
-        margin-bottom: 1em;
-        width: 67%;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3em;
+    border: 1px solid var(--border-checkbox);
+    margin-bottom: 1em;
+    width: 67%;
+}
 
 input.name__placeholder {
     margin-left: 2em;
 }
 
-.limit__placeholder, .name__placeholder {
+.limit__placeholder,
+.name__placeholder {
     padding: 0.4em;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
 }
 
 .select__input {
@@ -283,8 +284,8 @@ input.name__placeholder {
     margin-top: 1em;
 }
 
-.select__input option :disabled{
- color:var(--border-checkbox);
+.select__input option :disabled {
+    color: var(--border-checkbox);
 }
 
 .submit__wrapper {
@@ -292,27 +293,26 @@ input.name__placeholder {
     justify-content: center;
 }
 
-@media only screen and (max-width:768px){
-    #listWrapper{
+.random__quotes-button {
+    margin-left: 70px;
+}
+.random__authors-button {
+    margin-left: 490px;
+}
+
+@media only screen and (max-width: 768px) {
+    #listWrapper {
         column-count: 1;
-        width: 50%
+        width: 50%;
     }
     #formId {
         margin: -30px;
-       
     }
 }
 
-@media only screen and (max-width:1080px) and (min-width:769px){
-    #listWrapper{
+@media only screen and (max-width: 1080px) and (min-width: 769px) {
+    #listWrapper {
         column-count: 2;
         width: 980px;
     }
-}
-
-.random__quotes-button {
-    margin-left: 80px;
-}
-.random__authors-button {
-    margin-left: 520px;
 }
