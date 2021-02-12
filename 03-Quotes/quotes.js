@@ -12,7 +12,12 @@ const randomQuotes = document.getElementById('quotes__button').addEventListener(
 const randomAuthor = document.getElementById('author__button').addEventListener('click', getRandomAuthors)
 window.addEventListener('load', (e) => {
   getQuotes()
+  checkBoxes.style.display='none';
+  nameInput.style.display='none';
+  limit.style.display='none';
 })
+
+
 
 function toggleList(listvalue){
   if(listvalue=='author'){
@@ -21,6 +26,7 @@ function toggleList(listvalue){
   }else if(listvalue=='quotes'){
     nameInput.style.display='none';
     checkBoxes.style.display='block';
+    limit.style.display='block';
   }
   
 }
